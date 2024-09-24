@@ -10,7 +10,7 @@ public class Game {
 
     private boolean running = false;
     private int direction = RIGHT;
-    private double speed = 2.5;
+    private double speed = 7.5;
     private ArrayList<Square> food;
     private int points = 0;
 
@@ -133,7 +133,7 @@ public class Game {
         this.food = new ArrayList<>();
         this.frame.keys(this);
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 1; i++) {
             this.makeFood();
         }
 
