@@ -6,7 +6,7 @@ public class Frame extends JFrame {
 
     public Frame(Grid grid) {
         this.add(grid);
-        pointsLabel = new JLabel("Points: 0");
+        pointsLabel = new JLabel("Points: 0", SwingConstants.CENTER);
         pointsLabel.setFont(new Font("Times New Roman", Font.BOLD, 30));
         this.add(pointsLabel, BorderLayout.NORTH); // Add label to the top
     }
@@ -16,7 +16,7 @@ public class Frame extends JFrame {
     }
 
     public void showPoints(int points) {
-
+        pointsLabel.setVisible(false);
         String totPoints = ("Points: " + points);
 
         JPanel panel = new JPanel();
