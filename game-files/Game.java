@@ -4,15 +4,16 @@ import javax.swing.*;
 
 public class Game {
 
-    private Snake snake;
-    private Grid grid;
-    private Frame frame;
+    public Snake snake;
+    public Grid grid;
+    public Frame frame;
 
-    private boolean running = false;
-    private int direction = RIGHT;
-    private double speed = 6;
-    private ArrayList<Square> food;
-    private int points = 0;
+    public boolean running = false;
+    public int direction = RIGHT;
+    public boolean directionChanged = false;
+    public double speed = 5;
+    public ArrayList<Square> food;
+    public int points = 0;
 
     public static final int LEFT = 1;
     public static final int UP = 2;
@@ -97,10 +98,15 @@ public class Game {
         }
 
         this.snake.addSquare(next);
+        this.directionChanged = false;
     }
 
     public void giveDirection(int newDirection) {
-        this.direction = newDirection;
+        if (!this.directionChanged) {
+            this.direction = newDirection;
+            this.directionChanged = true;
+        }
+
     }
 
     public void makeFood() {
@@ -148,7 +154,7 @@ public class Game {
 
     public void start() {
         this.running = true;
-        this.snake = new Snake(this.grid.getSquare(12 / 2, 12 / 2));
+        this.snake = new Snake(this.grid.getSquare(30 / 2, 30 / 2));
         this.food = new ArrayList<>();
         this.frame.keys(this);
 

@@ -6,11 +6,11 @@ public class Grid extends JLabel {
     public final Square[][] map;
 
     public Grid() {
-        this.map = new Square[12][12];
-        this.setLayout(new GridLayout(12, 12));
+        this.map = new Square[30][30];
+        this.setLayout(new GridLayout(30, 30));
 
-        for (int column = 0; column < 12; column++) {
-            for (int row = 0; row < 12; row++) {
+        for (int column = 0; column < 30; column++) {
+            for (int row = 0; row < 30; row++) {
                 Square square = new Square(row, column);
 
                 this.map[column][row] = square;
