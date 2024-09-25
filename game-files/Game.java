@@ -10,7 +10,7 @@ public class Game {
 
     private boolean running = false;
     private int direction = RIGHT;
-    private double speed = 7.5;
+    private double speed = 6;
     private ArrayList<Square> food;
     private int points = 0;
 
@@ -34,22 +34,40 @@ public class Game {
         Square head = this.snake.getHead();
         Square next = null;
 
+        // Wrap around logic
+        // try {
+        // switch (this.direction) {
+        // case LEFT:
+        // next = this.grid.getSquare((head.row - 1 + 12) % 12, head.column);
+        // break;
+        // case RIGHT:
+        // next = this.grid.getSquare((head.row + 1) % 12, head.column);
+        // break;
+        // case UP:
+        // next = this.grid.getSquare(head.row, (head.column - 1 + 12) % 12);
+        // break;
+        // case DOWN:
+        // next = this.grid.getSquare(head.row, (head.column + 1) % 12);
+        // break;
+        // }
+        // }
+
         try {
             switch (this.direction) {
                 case LEFT:
-                    next = this.grid.getSquare(head.row - 1, head.coloumn);
+                    next = this.grid.getSquare(head.row - 1, head.column);
                     break;
 
                 case RIGHT:
-                    next = this.grid.getSquare(head.row + 1, head.coloumn);
+                    next = this.grid.getSquare(head.row + 1, head.column);
                     break;
 
                 case UP:
-                    next = this.grid.getSquare(head.row, head.coloumn - 1);
+                    next = this.grid.getSquare(head.row, head.column - 1);
                     break;
 
                 case DOWN:
-                    next = this.grid.getSquare(head.row, head.coloumn + 1);
+                    next = this.grid.getSquare(head.row, head.column + 1);
                     break;
             }
         }
@@ -62,8 +80,8 @@ public class Game {
         if (this.food.contains(next)) {
             this.food.remove(next);
             this.makeFood();
-
             this.points++;
+            this.frame.updatePoints(this.points);
 
             if (this.speed < 2.5) {
                 this.speed += 0.1;
@@ -107,14 +125,14 @@ public class Game {
     }
 
     private void movementSpeed() {
-        this.sleep((int) (1500.0 / this.speed));
+        this.sleep((int) (1000 / this.speed));
     }
 
     private void sleep(int milSek) {
         try {
             Thread.sleep(milSek);
         } catch (InterruptedException exception) {
-            System.err.println("Det oppstod en feil!");
+            System.err.println("An error occured!");
         }
     }
 
@@ -125,6 +143,7 @@ public class Game {
 
         this.frame.remove(this.grid);
         this.frame.showPoints(this.points);
+
     }
 
     public void start() {

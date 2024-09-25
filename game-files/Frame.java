@@ -2,9 +2,17 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Frame extends JFrame {
-    public Frame(Grid grid) {
+    private JLabel pointsLabel;
 
+    public Frame(Grid grid) {
         this.add(grid);
+        pointsLabel = new JLabel("Points: 0");
+        pointsLabel.setFont(new Font("Times New Roman", Font.BOLD, 30));
+        this.add(pointsLabel, BorderLayout.NORTH); // Add label to the top
+    }
+
+    public void updatePoints(int points) {
+        pointsLabel.setText("Points: " + points); // Update points display
     }
 
     public void showPoints(int points) {

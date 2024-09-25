@@ -3,17 +3,16 @@ import javax.swing.*;
 
 public class Square extends JPanel {
     public final int row;
-    public final int coloumn;
+    public final int column;
 
-    public void resetColor() {
-        this.setBackground(Color.black);
-    }
-
-    public Square(int row, int coloumn) {
+    public Square(int row, int column) {
         this.row = row;
-        this.coloumn = coloumn;
+        this.column = column;
 
         this.resetColor();
     }
 
+    public void resetColor() {
+        this.setBackground(Color.black);
+    }
 }

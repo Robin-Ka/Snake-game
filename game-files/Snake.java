@@ -9,13 +9,15 @@ public class Snake {
         this.addSquare(start);
     }
 
-    public boolean hits(Square rute) {
-        return this.body.contains(rute);
+    public boolean hits(Square square) {
+        return this.body.contains(square);
     }
 
-    public void addSquare(Square rute) {
-        this.body.add(rute);
-        rute.setBackground(Color.green);
+    public void addSquare(Square square) {
+        this.body.add(square);
+
+        square.setBackground(Color.green.darker()); // Set the head color
+
     }
 
     public Square getHead() {
